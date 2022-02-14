@@ -16,7 +16,7 @@ const AppComponent = (props) => {
             {props.Heading}
           </h1>
           <div className={styles["Cta-btn-container"]}>
-            <a href="##experience">
+            <a href="#experience">
               <button
                 className={` ${styles["cta-btn"]} ${projectStyles["anchor"]} ${projectStyles["button"]} `}
               >
