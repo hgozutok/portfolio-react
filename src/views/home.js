@@ -10,6 +10,7 @@ import SectionSeparator from "../components/section-separator";
 import Contact from "../components/contact";
 import FooterContainer from "../components/footer-container";
 import styles from "./home.module.css";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
         <meta property="og:title" content="Huseyin GOZUTOK Portfolio Page" />
       </Helmet>
       <NavbarContainer></NavbarContainer>
+      {/*<Navbar />*/}
       <div className={styles["section-separator"]}></div>
       <div className={styles["section-separator1"]}></div>
       <AppComponent></AppComponent>
