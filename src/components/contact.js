@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 import PropTypes from "prop-types";
 
@@ -6,6 +7,30 @@ import projectStyles from "../style.module.css";
 import styles from "./contact.module.css";
 
 const Contact = (props) => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        form.current,
+        process.env.REACT_APP_EMAILJS_USER_ID
+      )
+      .then(
+        (result) => {
+          alert("Your message has been sent!");
+          console.log(result.text);
+        },
+        (error) => {
+          alert("Your message could not be sent. Please try again.");
+          console.log(error.text);
+        }
+      );
+  };
+
   return (
     <div id="contact" className={styles["subscribe"]}>
       <img
@@ -26,27 +51,34 @@ const Contact = (props) => {
             {props.text}
           </span>
         </div>
-        <input
-          type="text"
-          required={true}
-          placeholder={props.textinput_placeholder}
-          className={` ${styles["textinput"]} ${projectStyles["section-Text"]} ${projectStyles["input"]} `}
-        />
-        <input
-          type="text"
-          required={true}
-          placeholder={props.textinput_placeholder1}
-          className={` ${styles["textinput1"]} ${projectStyles["section-Text"]} ${projectStyles["input"]} `}
-        />
-        <textarea
-          placeholder={props.textarea_placeholder}
-          className={` ${styles["textarea"]} ${projectStyles["section-Text"]} ${projectStyles["input"]} `}
-        ></textarea>
-        <button
-          className={` ${styles["button"]} ${projectStyles["anchor"]} ${projectStyles["button"]} `}
-        >
-          {props.button}
-        </button>
+        <form ref={form} onSubmit={sendEmail}>
+          <input
+            type="email"
+            required={true}
+            name="user_email"
+            placeholder={props.textinput_placeholder}
+            className={` ${styles["textinput"]} ${projectStyles["section-Text"]} ${projectStyles["input"]} `}
+          />
+          <input
+            type="text"
+            required={true}
+            name="user_name"
+            placeholder={props.textinput_placeholder1}
+            className={` ${styles["textinput1"]} ${projectStyles["section-Text"]} ${projectStyles["input"]} `}
+          />
+          <textarea
+            placeholder={props.textarea_placeholder}
+            name="message"
+            required={true}
+            className={` ${styles["textarea"]} ${projectStyles["section-Text"]} ${projectStyles["input"]} `}
+          ></textarea>
+          <button
+            type="submit"
+            className={` ${styles["button"]} ${projectStyles["anchor"]} ${projectStyles["button"]} `}
+          >
+            {props.button}
+          </button>
+        </form>
       </div>
     </div>
   );

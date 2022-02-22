@@ -10,7 +10,6 @@ import SectionSeparator from "../components/section-separator";
 import Contact from "../components/contact";
 import FooterContainer from "../components/footer-container";
 import styles from "./home.module.css";
-import Navbar from "../components/Navbar";
 
 const Home = () => {
   return (
