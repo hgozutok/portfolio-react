@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <div className={styles["container"]}>
       <Helmet>
-        <title>Portfolio Page1</title>
+        <title>Huseyin GOZUTOK Portfolio </title>
         <meta property="og:title" content="Huseyin GOZUTOK Portfolio Page" />
       </Helmet>
       <NavbarContainer></NavbarContainer>
