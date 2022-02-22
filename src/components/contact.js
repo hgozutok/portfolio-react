@@ -6,6 +6,9 @@ import PropTypes from "prop-types";
 import projectStyles from "../style.module.css";
 import styles from "./contact.module.css";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Contact = (props) => {
   const form = useRef();
 
@@ -21,18 +24,21 @@ const Contact = (props) => {
       )
       .then(
         (result) => {
-          alert("Your message has been sent!");
-          console.log(result.text);
+          toast.success("Message sent successfully!");
+          // alert("Your message has been sent!");
+          // console.log(result.text);
         },
         (error) => {
-          alert("Your message could not be sent. Please try again.");
-          console.log(error.text);
+          toast.error("Message failed to send!");
+          //  alert("Your message could not be sent. Please try again.");
+          // console.log(error.text);
         }
       );
   };
 
   return (
     <div id="contact" className={styles["subscribe"]}>
+      <ToastContainer />
       <img
         alt={props.image_alt}
         src={props.image_src}
