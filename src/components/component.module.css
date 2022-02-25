@@ -67,6 +67,7 @@
   max-height: 400px;
   max-width: 400px;
   object-fit: cover;
+  border: #040404 solid 3px;
   border-radius: var(--dl-radius-radius-round);
 }
 @media (max-width: 991px) {

@@ -70,7 +70,7 @@ const AppComponent = (props) => {
 
 AppComponent.defaultProps = {
   Heading: "I help startups deliver the right message to their customers",
-  image_src: "../assets/hugo.jpg",
+  image_src: "../assets/hugo.png",
   image_alt: "image",
   "cta-btn": "ABOUT ME",
   text: "MY WORK",
